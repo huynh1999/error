@@ -31,8 +31,7 @@ public class NewController {
 	private MessageUtil messageUtil;
 
 	@RequestMapping(value = "/quan-tri/bai-viet/danh-sach", method = RequestMethod.GET)
-	public ModelAndView showList(@RequestParam("page") int page, 
-								 @RequestParam("limit") int limit, HttpServletRequest request) {
+	public ModelAndView showList(@RequestParam("page") int page,  HttpServletRequest request) {
 		NewDTO model = new NewDTO();
 		if(request.getParameter("page")!=null)
 		{
@@ -44,9 +43,9 @@ public class NewController {
 		{
 			model.setPage(1);
 		}
-		model.setLimit(limit);
+		model.setLimit(21);
 		ModelAndView mav = new ModelAndView("admin/new/list");
-		Pageable pageable = new PageRequest(page - 1, limit);
+		Pageable pageable = new PageRequest(page - 1, 21);
 		model.setListResult(newService.findAll(pageable));
 		model.setTotalItem(newService.getTotalItem());
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
@@ -72,6 +71,25 @@ public class NewController {
 			mav.addObject("alert", message.get("alert"));
 		}
 		mav.addObject("categories", categoryService.findAll());
+		mav.addObject("model", model);
+		return mav;
+	}
+	@RequestMapping("/quan-tri/thong-ke")
+	public ModelAndView report(HttpServletRequest request)
+	{	NewDTO model = new NewDTO();
+		model.setPage(1);
+		model.setLimit(10);
+		
+		ModelAndView mav = new ModelAndView("admin/new/pdf");
+		Pageable pageable = new PageRequest(1 - 1,10);
+		model.setListResult(newService.report(pageable));
+		model.setTotalItem(newService.getTotalItem());
+		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("message", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
 		mav.addObject("model", model);
 		return mav;
 	}
