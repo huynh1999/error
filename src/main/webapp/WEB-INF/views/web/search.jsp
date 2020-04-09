@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <c:url var="newAPI" value="/api/new"/>
-<c:url var="newURL" value="/trang-chu?"/>
+<c:url var="newURL" value="/trang-chu./"/>
 <!DOCTYPE html>
 
 <html>
@@ -25,15 +25,17 @@
 <body>
  <div class="editors-pick-post-area section-padding-80-50">
         <div class="container">
-
-                    <div class="row">
-
+<div  class="section-header">
+			<p style="font-size:25px; font:arial;"><strong style="color:black">${model.listResult.size()}</strong> kết quả tìm kiếm phù hợp</p>
+ <div class="row">
+                    
                         <!-- Single Post -->
                         <c:forEach var="item" items="${model.listResult}">
+                        
                        		<div class="col-12 col-lg-4"  value="${item.id}">
                           	  <div class="single-blog-post">
                              	   <div class="post-thumb">
-                                	    <a href="<c:url value='/baiviet/${item.id}'/>"><img style="weight:275px;height:175px" href="${model.thumbnail}" alt=""></a>
+                                	    <a href="<c:url value='/baiviet/${item.id}'/>"><img style="weight:275px;height:175px" src="${item.thumbnail}" alt=""></a>
                              	   </div>
                                 <div class="post-data">
                                     <a href="<c:url value='/baiviet/${item.id}'/>" class="post-title">
@@ -42,6 +44,7 @@
                                    		<div class="post-meta">
                                         	<div class="post-date"><a href="<c:url value='/baiviet/${item.id}'/>">${item.shortDescription}</a></div>
                                     </div>
+ 				
                               	  </div>
                            		</div>
                        		</div>
@@ -51,28 +54,8 @@
                 </div>
             </div>
           </div>
-          <form action="<c:url value='/trang-chu/'/>" id="formSubmit" method="get">
- <ul class="pagination" id="pagination"></ul>	
-											<input type="hidden" value="" id="page" name="page"/>
-											
-                     </form>
-											<script>
-			var totalPages = ${model.totalPage};
-			var currentPage = ${model.page};
-			$(function () {
-		        window.pagObj = $('#pagination').twbsPagination({
-		            totalPages: totalPages,
-		            visiblePages: 10,
-		            startPage: currentPage,
-		            onPageClick: function (event, page) {
-		            	if (currentPage != page) {
-		            		$('#limit').val(2);
-							$('#page').val(page);
-							$('#formSubmit').submit();
-						}
-		            }
-		        });
-		    });
-			</script>
+</div>
+                   
+         
 </body>
 </html>

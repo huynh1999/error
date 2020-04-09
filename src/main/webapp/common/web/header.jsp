@@ -12,7 +12,7 @@
                         <div class="top-header-content d-flex align-items-center justify-content-between">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="/spring-mvc/trang-chu"><img src="<c:url value="/template/web/img/core-img/logo.png"/>" alt=""></a>
+                                <a href="/trang-chu"><img src="<c:url value="/template/web/img/core-img/logo.png"/>" alt=""></a>
                             </div>
 
                             <!-- Login Search Area -->
@@ -20,7 +20,7 @@
                                
                                 <!-- Search Form -->
                                 <div class="search-form">
-                                    <form action="#" method="post">
+                                    <form action="/Search" method="get">
                                         <input type="search" name="search" class="form-control" placeholder="Search">
                                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                     </form>
@@ -41,7 +41,7 @@
 
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="/spring-mvc/trang-chu"><img src="<c:url value="/resources/img/core-img/logo.png"/>" alt=""></a>
+                            <a href="/trang-chu"><img src="<c:url value="/resources/img/core-img/logo.png"/>" alt=""></a>
                         </div>
 
                         <!-- Navbar Toggler -->
@@ -60,12 +60,12 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="/spring-mvc/trang-chu">Trang Chủ</a></li>
-                                    <li><a href="<c:url value="/danh-muc/0"/>">Thể Thao</a></li>
-                                    <li><a href="<c:url value="/danh-muc/1"/>">Công Nghệ</a></li>
-                                    <li><a href="<c:url value="/danh-muc/2"/>">Giải Trí</a></li>
-                                    <li><a href="<c:url value="/danh-muc/0"/>">Pháp Luật</a></li>
-                                    <li><a href="<c:url value="/danh-muc/0"/>">Giáo Dục</a></li>
+                                    <li class="active"><a href="/trang-chu">Trang Chủ</a></li>
+                                    <li><a href="<c:url value="/danhmuc/0?page=1"/>">Thể Thao</a></li>
+                                    <li><a href="<c:url value="/danhmuc/1?page=1"/>">Công Nghệ</a></li>
+                                    <li><a href="<c:url value="/danhmuc/2?page=1"/>">Giải Trí</a></li>
+                                    <li><a href="#">Pháp Luật</a></li>
+                                    <li><a href="#">Giáo Dục</a></li>
                                     <li><a href="/spring-mvc/about">Về Chúng Tôi</a></li>
                                 </ul>
                             </div>

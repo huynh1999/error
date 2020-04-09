@@ -86,8 +86,7 @@
 												</tbody>
 											</table>
 											<ul class="pagination" id="pagination"></ul>	
-											<input type="hidden" value="" id="page" name="page"/>
-											<input type="hidden" value="" id="limit" name="limit"/>									
+											<input type="hidden" value="" id="page" name="page"/>								
 										</div>
 									</div>
 								</div>
@@ -104,7 +103,7 @@
 			$(function () {
 		        window.pagObj = $('#pagination').twbsPagination({
 		            totalPages: totalPages,
-		            visiblePages: 10,
+		            visiblePages: 3,
 		            startPage: currentPage,
 		            onPageClick: function (event, page) {
 		            	if (currentPage != page) {

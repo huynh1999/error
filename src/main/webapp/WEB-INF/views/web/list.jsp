@@ -17,9 +17,8 @@
 
     <!-- Title -->
     <title>The News Paper - News &amp; Lifestyle Magazine Template</title>
-    <meta property="fb:app_id" content="2959170494151349" />
-
-
+ 
+   
 
 </head>
 
@@ -34,14 +33,14 @@
                        		<div class="col-12 col-lg-4"  value="${item.id}">
                           	  <div class="single-blog-post">
                              	   <div class="post-thumb">
-                                	    <a href="#"><img src="${item.thumbnail}" alt=""></a>
+                                	    <a href="<c:url value='/baiviet/${item.id}'/>"><img style="weight:275px;height:175px" src="${item.thumbnail}" alt=""></a>
                              	   </div>
                                 <div class="post-data">
                                     <a href="<c:url value='/baiviet/${item.id}'/>" class="post-title">
                                         <h6>${item.title}</h6>
                                     </a>
                                    		<div class="post-meta">
-                                        	<div class="post-date"><a href="#">${item.shortDescription}</a></div>
+                                        	<div class="post-date"><a href="<c:url value='/baiviet/${item.id}'/>">${item.shortDescription}</a></div>
                                     </div>
                               	  </div>
                            		</div>
