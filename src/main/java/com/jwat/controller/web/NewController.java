@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +34,9 @@ public class NewController {
 								, HttpServletRequest request) {
 		NewDTO model = new NewDTO();
 		model.setPage(page);
-		model.setLimit(20);
+		model.setLimit(21);
 		ModelAndView mav = new ModelAndView("web/list");
-		Pageable pageable = new PageRequest(page - 1,20);
+		Pageable pageable = new PageRequest(page - 1,21);
 		model.setListResult(newService.findAll(pageable));
 		model.setTotalItem(newService.getTotalItem());
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
@@ -74,20 +73,56 @@ public class NewController {
 	{
 		NewDTO model = new NewDTO();
 		model.setItem(newService.findById(id));
+		newService.Count(id);
 		ModelAndView mav = new ModelAndView("web/catagories-post");
 		mav.addObject("model", model);
 		return mav;
 	}
+	
 	@RequestMapping("/danh-muc/{id}")
 	public ModelAndView showCategory(@PathVariable("id")int id,HttpServletRequest request)
 	{
 		NewDTO model = new NewDTO();
 		model.setPage(1);
 		model.setLimit(21);
-		model.setSortBy("desc");
 		ModelAndView mav = new ModelAndView("web/category");
-		model.setListResult(newService.findBycategoryid(id));
+		Pageable pageable = new PageRequest(1 - 1, 21);
+		model.setListResult(newService.findBycategoryid(id,pageable));
 		
+		model.setTotalItem(newService.getTotalItem());
+		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("message", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		mav.addObject("model", model);
+		return mav;
+	}
+	@RequestMapping(value = "/Search", method = RequestMethod.GET)
+	public ModelAndView showCategorys(@RequestParam("search") String title,HttpServletRequest request)
+	{
+		NewDTO model = new NewDTO();
+		model.setListResult(newService.searchByTitleLike(title));
+		ModelAndView mav = new ModelAndView("web/search");
+		model.setTotalItem(newService.getTotalItem());
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("message", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		mav.addObject("model", model);
+		return mav;
+	}
+	@RequestMapping(value = "/danhmuc/{id}", method = RequestMethod.GET)
+	public ModelAndView listcate(@PathVariable("id")int id,@RequestParam("page") int page
+								, HttpServletRequest request) {
+		NewDTO model = new NewDTO();
+		model.setPage(page);
+		model.setLimit(21);
+		ModelAndView mav = new ModelAndView("web/category");
+		Pageable pageable = new PageRequest(page - 1, 21);
+		model.setListResult(newService.findBycategoryid(id,pageable));
 		model.setTotalItem(newService.getTotalItem());
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
 		if (request.getParameter("message") != null) {

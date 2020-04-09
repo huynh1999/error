@@ -33,15 +33,16 @@
                        		<div class="col-12 col-lg-4"  value="${item.id}">
                           	  <div class="single-blog-post">
                              	   <div class="post-thumb">
-                                	    <a href="#"><img src="${item.thumbnail}" alt=""></a>
+                                	    <a href="<c:url value='/baiviet/${item.id}'/>"><img style="weight:275px;height:175px" src="${item.thumbnail}" alt=""></a>
                              	   </div>
                                 <div class="post-data">
                                     <a href="<c:url value='/baiviet/${item.id}'/>" class="post-title">
                                         <h6>${item.title}</h6>
                                     </a>
                                    		<div class="post-meta">
-                                        	<div class="post-date"><a href="#">${item.shortDescription}</a></div>
+                                        	<div class="post-date"><a href="<c:url value='/baiviet/${item.id}'/>">${item.shortDescription}</a></div>
                                     </div>
+                                   
                               	  </div>
                            		</div>
                        		</div>
@@ -51,14 +52,16 @@
                 </div>
             </div>
           </div>
-          <form action="<c:url value='/danhmuc/'/>" id="formSubmit" method="get">
+          <form action="<c:url value=''/>" id="formSubmit" method="get">
 <ul class="pagination" style="margin-left:35%; margin-top:20px;" id="pagination"></ul>
 										<input type="hidden" value="" id="page" name="page"/>
+										
                      </form>
 
 											<script>
 			var totalPages = ${model.totalPage};
 			var currentPage = ${model.page};
+			
 			$(function () {
 		        window.pagObj = $('#pagination').twbsPagination({
 		            totalPages: totalPages,
@@ -68,6 +71,7 @@
 		            	if (currentPage != page) {
 		            		$('#limit').val(2);
 							$('#page').val(page);
+							
 							$('#formSubmit').submit();
 						}
 		            }

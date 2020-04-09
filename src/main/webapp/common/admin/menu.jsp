@@ -44,7 +44,14 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href="<c:url value='/quan-tri/bai-viet/danh-sach?page=1&limit=2'/>">
+                    <a href="<c:url value='/quan-tri/thong-ke'/>">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                      Thống kê
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="<c:url value='/quan-tri/bai-viet/danh-sach?page=1'/>">
                         <i class="menu-icon fa fa-caret-right"></i>
                         DS bài viết
                     </a>

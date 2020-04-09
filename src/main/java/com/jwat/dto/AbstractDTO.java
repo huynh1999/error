@@ -7,6 +7,7 @@ import java.util.List;
 public class AbstractDTO<T> {
 	
 	private Long id;
+	private int view;
 	private Timestamp createdDate;
 	private Timestamp modifiedDate;
 	private String createdBy;
@@ -35,6 +36,12 @@ public class AbstractDTO<T> {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public int getView() {
+		return view;
+	}
+	public void setView(int view) {
+		this.view = view;
 	}
 	public Timestamp getCreatedDate() {
 		return createdDate;

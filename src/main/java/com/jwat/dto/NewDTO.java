@@ -7,13 +7,19 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 	private String shortDescription;
 	private String content;
 	private Long categoryId;
+	private int view;
 	private String categoryCode;
-	
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public int getView() {
+		return view;
+	}
+	public void setView(int view) {
+		this.view = view;
 	}
 	public String getThumbnail() {
 		return thumbnail;
