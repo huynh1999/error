@@ -3,7 +3,6 @@ package com.jwat.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jwat.repository.NewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,7 @@ import com.jwat.dto.NewDTO;
 import com.jwat.entity.CategoryEntity;
 import com.jwat.entity.NewEntity;
 import com.jwat.repository.CategoryRepository;
+import com.jwat.repository.NewRepository;
 import com.jwat.service.INewService;
 
 @Service
@@ -40,6 +40,17 @@ public class NewService implements INewService {
 	}
 
 	@Override
+	public List<NewDTO>report(Pageable pageable) {
+		List<NewDTO> models = new ArrayList<>();
+		List<NewEntity> entities = newRepository.report(pageable);
+		for (NewEntity item: entities) {
+			NewDTO newDTO = newConverter.toDto(item);
+			models.add(newDTO);
+		}
+		return models;
+	}
+
+	@Override
 	public int getTotalItem() {
 		return (int) newRepository.count();
 	}
@@ -50,17 +61,32 @@ public class NewService implements INewService {
 		return newConverter.toDto(entity);
 	}
 	@Override
-	public List<NewDTO> findBycategoryid(long categoryid) {
-		List<NewEntity> entity = newRepository.findByCategory( categoryid);
+	public List<NewDTO> findBycategoryid(long categoryid,Pageable pageable) {
 		List<NewDTO> models = new ArrayList<>();
+		List<NewEntity> entity = newRepository.findByCategory(categoryid,pageable);
+		
 		for (NewEntity item: entity) {
 			NewDTO newDTO = newConverter.toDto(item);
 			models.add(newDTO);
 		}
 		return models;
 	}
-	
-	
+	@Override
+	public List<NewDTO> searchByTitleLike(String title) {
+		List<NewDTO> models = new ArrayList<>();
+		List<NewEntity> entity = newRepository.searchByTitleLike(title);
+		
+		for (NewEntity item: entity) {
+			NewDTO newDTO = newConverter.toDto(item);
+			models.add(newDTO);
+		}
+		return models;
+	}
+	@Override
+	public void Count(long id) {
+		newRepository.Count(id);
+	}
+
 	@Override
 	@Transactional
 	public NewDTO save(NewDTO dto) {
