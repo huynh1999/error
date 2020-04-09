@@ -24,13 +24,9 @@ public class NewEntity extends BaseEntity {
 	@Column(name = "content", columnDefinition = "TEXT")
 	private String content;
 	
-	@Column(name = "view")
-	private int view;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryid")
     private CategoryEntity category;
-
 	
 	public String getTitle() {
 		return title;
@@ -38,14 +34,6 @@ public class NewEntity extends BaseEntity {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public int getView() {
-		return view;
-	}
-
-	public void setView(int view) {
-		this.view = view;
 	}
 
 	public String getThumbnail() {
@@ -76,16 +64,7 @@ public class NewEntity extends BaseEntity {
 		return category;
 	}
 
-
 	public void setCategory(CategoryEntity category) {
 		this.category = category;
 	}
-
-	
-
-
-
-	
-
-	
 }

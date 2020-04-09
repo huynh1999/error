@@ -1,13 +1,13 @@
-package com.jwat.dto;
+package com.jwat.model;
 
-public class NewDTO extends AbstractDTO<NewDTO> {
+public class NewModel extends AbstractModel<NewModel> {
 	
 	private String title;
 	private String thumbnail;
-	private String shortDescription;
+	private String shortdescription;
 	private String content;
-	private Long categoryId;
-	private String categoryCode;
+	private Long categoryid;
+	private String categorycode;
 	
 	public String getTitle() {
 		return title;
@@ -22,10 +22,10 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 		this.thumbnail = thumbnail;
 	}
 	public String getShortDescription() {
-		return shortDescription;
+		return shortdescription;
 	}
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
+	public void setShortDescription(String shortdescription) {
+		this.shortdescription = shortdescription;
 	}
 	public String getContent() {
 		return content;
@@ -34,15 +34,17 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 		this.content = content;
 	}
 	public Long getCategoryId() {
-		return categoryId;
+		return categoryid;
 	}
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoryId(Long categoryid) {
+		this.categoryid = categoryid;
 	}
+
 	public String getCategoryCode() {
-		return categoryCode;
+		return categorycode;
 	}
-	public void setCategoryCode(String categoryCode) {
-		this.categoryCode = categoryCode;
+
+	public void setCategoryCode(String categorycode) {
+		this.categorycode = categorycode;
 	}
 }
