@@ -1,21 +1,20 @@
-package com.jwat.dto;
+package com.jwat.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractDTO<T> {
+public class AbstractModel<T> {
 	
 	private Long id;
-	private Timestamp createdDate;
-	private Timestamp modifiedDate;
-	private String createdBy;
-	private String modifiedBy;
+	private Timestamp createddate;
+	private Timestamp modifieddate;
+	private String createdby;
+	private String modifiedby;
 	private long[] ids;
-	private T item;
 	private List<T> listResult = new ArrayList<>();
 	private Integer page;
-	private Integer limit;
+	private Integer maxPageItem;
 	private Integer totalPage;
 	private Integer totalItem;
 	private String sortName;
@@ -23,13 +22,7 @@ public class AbstractDTO<T> {
 	private String alert;
 	private String message;
 	private String type;
-
-	public T getItem() {
-		return item;
-	}
-	public void setItem(T item) {
-		this.item = item;
-	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -37,28 +30,28 @@ public class AbstractDTO<T> {
 		this.id = id;
 	}
 	public Timestamp getCreatedDate() {
-		return createdDate;
+		return createddate;
 	}
-	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedDate(Timestamp createddate) {
+		this.createddate = createddate;
 	}
 	public Timestamp getModifiedDate() {
-		return modifiedDate;
+		return modifieddate;
 	}
-	public void setModifiedDate(Timestamp modifiedDate) {
-		this.modifiedDate = modifiedDate;
+	public void setModifiedDate(Timestamp modifieddate) {
+		this.modifieddate = modifieddate;
 	}
 	public String getCreatedBy() {
-		return createdBy;
+		return createdby;
 	}
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	public void setCreatedBy(String createdby) {
+		this.createdby = createdby;
 	}
 	public String getModifiedBy() {
-		return modifiedBy;
+		return modifiedby;
 	}
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
+	public void setModifiedBy(String modifiedby) {
+		this.modifiedby = modifiedby;
 	}
 	public long[] getIds() {
 		return ids;
@@ -77,6 +70,12 @@ public class AbstractDTO<T> {
 	}
 	public void setPage(Integer page) {
 		this.page = page;
+	}
+	public Integer getMaxPageItem() {
+		return maxPageItem;
+	}
+	public void setMaxPageItem(Integer maxPageItem) {
+		this.maxPageItem = maxPageItem;
 	}
 	public Integer getTotalPage() {
 		return totalPage;
@@ -125,11 +124,5 @@ public class AbstractDTO<T> {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-	public Integer getLimit() {
-		return limit;
-	}
-	public void setLimit(Integer limit) {
-		this.limit = limit;
 	}
 }
